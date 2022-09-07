@@ -1,0 +1,93 @@
+% Monthly Calendar
+% LaTeX Template
+% Adapted version to jinja2 template
+%
+% This template was downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Evan Sultanik with modifications by 
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the calendar.sty file to be in the same directory as the
+% .tex file. The calendar.sty file provides the necessary structure to create the
+% calendar.
+%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt]{article} % Can also use 9pt or 11pt for a smaller or larger overall font size
+\usepackage{calendar} % Use the calendar.sty style
+\usepackage[landscape, a4paper, margin=1cm]{geometry} % Page dimensions and margins
+\usepackage{libertine} % Use the Palatino font
+
+\begin{document}
+
+\pagestyle{empty} % Disable default headers and footers
+\setlength{\parindent}{0pt} % Stop paragraph indentation
+\StartingDayNumber=2 % The starting day of the calendar, default of 1 means Sunday, 2 for Monday, etc
+
+%----------------------------------------------------------------------------------------
+%	CALENDAR HEADER
+%----------------------------------------------------------------------------------------
+
+\begin{center}
+    \textsc{\LARGE \VAR{month} }\\ % Month
+    \textsc{\large \VAR{year} } % Year
+\end{center}
+
+%----------------------------------------------------------------------------------------
+
+\begin{calendar}{\textwidth} % Calendar to be the entire width of the page
+
+%----------------------------------------------------------------------------------------
+%	BLANK DAYS BEFORE THE BEGINNING OF THE CALENDAR
+%----------------------------------------------------------------------------------------
+
+%% for x in range(blankdays)
+    \BlankDay
+%% endfor
+
+%----------------------------------------------------------------------------------------
+%	NUMBERED DAYS AND CALENDAR CONTENT
+%----------------------------------------------------------------------------------------
+
+% These are the numbered days in the template - if there are less than 31 days simply comment out the days that aren't needed
+% \vspace{2.5cm} is only there to provide an even look to the calendar where each day is 2.5cm tall, it can be changed or removed to automatically adjust to the day in the week with the most content
+% Use \eventskip instead of \\ for newlines between events
+
+\setcounter{calendardate}{1} % Start the date counter at 1
+
+%\day{Work}{10am Meeting with Boss \eventskip 12pm TPS Report Due} % 1 - Example of content: first argument is the heading, then the content of the day
+%\day{Work}{9am Team Standup Meeting \eventskip \dayheader{Social}{}\eventskip 5:30pm Tennis with John, Janet and James} % 2 - Example of day with multiple headings
+
+%% if to_reduce
+%% for d in range(days_in_month)
+    \day{}{\vspace{2.1cm}} 
+%% endfor
+%% else
+%% for d in range(days_in_month)
+    \day{}{\vspace{2.5cm}} 
+%% endfor
+%% endif
+
+% Un-comment the \BlankDay below if the bottom line of the calendar is missing
+%\BlankDay
+
+% Un-comment to start counting again after 31
+%\setcounter{calendardate}{1}
+%\day{}{\vspace{2.5cm}} % 1
+%\day{}{\vspace{2.5cm}} % 2
+%\day{}{\vspace{2.5cm}} % 3
+
+%----------------------------------------------------------------------------------------
+
+\finishCalendar
+\end{calendar}
+\end{document}
